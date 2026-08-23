@@ -1,0 +1,1534 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Untuk Athifa, Cintaku</title>
+  <style>
+    :root {
+      --bg1: #130b1d;
+      --bg2: #2e1039;
+      --bg3: #4d1d46;
+      --pink: #ff6eb6;
+      --pink2: #ff9ec9;
+      --rose: #ffd6e7;
+      --gold: #ffd166;
+      --lavender: #d7c9ff;
+      --white: #fff9fd;
+      --text: #fdf2f8;
+      --muted: #f8d6ea;
+      --card: rgba(255,255,255,0.08);
+      --cardStrong: rgba(255,255,255,0.13);
+      --shadow: rgba(255, 86, 160, 0.35);
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Playfair Display", "Great Vibes", Georgia, serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,110,182,0.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(168,139,250,0.2), transparent 30%),
+        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 35%, var(--bg3) 100%);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .container {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(19, 11, 29, 0.24);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 72px;
+      gap: 1rem;
+      width: min(1120px, calc(100% - 2rem));
+      margin: 0 auto;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--pink), #ffb7d9);
+      box-shadow: 0 10px 25px rgba(255, 110, 182, 0.5);
+      font-size: 1.2rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.96rem;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      opacity: 0.9;
+      transition: opacity 0.25s ease;
+    }
+
+    .nav-links a:hover { opacity: 1; }
+
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+      background: linear-gradient(135deg, var(--pink), #ff8cc6);
+      color: white;
+      border: none;
+      padding: 0.9rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 700;
+      box-shadow: 0 14px 30px var(--shadow);
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 18px 35px rgba(255, 110, 182, 0.5);
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 4rem 0 2rem;
+    }
+
+    .hero-inner {
+      width: min(1120px, calc(100% - 2rem));
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: var(--rose);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(3rem, 5vw, 6rem);
+      line-height: 0.95;
+      letter-spacing: -0.05em;
+      text-shadow: 0 16px 40px rgba(255,128,191,0.18);
+    }
+
+    .highlight {
+      background: linear-gradient(135deg, #fff0f7, #ffd6e7, #ffc2dd);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .lead {
+      margin-top: 1.2rem;
+      max-width: 38rem;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.7rem;
+    }
+
+    .secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.13);
+      color: var(--white);
+      padding: 0.9rem 1.4rem;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+    }
+
+    .secondary:hover { transform: translateY(-2px); }
+
+    .creator-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.7rem;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.13);
+      color: var(--white);
+      padding: 0.85rem 1.2rem;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+    }
+
+    .creator-link:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,0.25);
+    }
+
+    .creator-link img {
+      width: 28px;
+      height: 28px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(120px, 1fr));
+      gap: 1rem;
+      margin-top: 2rem;
+      max-width: 450px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1rem;
+      padding: 1rem 0.8rem;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: clamp(1.5rem, 2vw, 2rem);
+      color: var(--gold);
+    }
+
+    .stat span {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-card {
+      position: relative;
+      justify-self: center;
+      width: min(100%, 420px);
+      min-height: 520px;
+      padding: 1rem;
+      border-radius: 2rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+    }
+
+    .portrait {
+      position: relative;
+      height: 100%;
+      min-height: 480px;
+      border-radius: 1.5rem;
+      overflow: hidden;
+      background:
+        linear-gradient(180deg, rgba(77,29,70,0.15), rgba(19,11,29,0.45)),
+        url("https://cdn.discordapp.com/attachments/1310214947610951682/1537850882970886274/IMG-20260722-WA0118.jpg?ex=6a808abe&is=6a7f393e&hm=c9b7704120224bab5477ea8c9012050e78a8898d32099a728471ac249bb39f61&' width='800' height='1000' viewBox='0 0 800 1000'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%23ffbfd8'/%3E%3Cstop offset='0.5' stop-color='%23ff9cc6'/%3E%3Cstop offset='1' stop-color='%23d7c9ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='1000' fill='url(%23g)'/%3E%3Ccircle cx='400' cy='360' r='125' fill='rgba(255,255,255,0.35)'/%3E%3Ccircle cx='400' cy='730' r='230' fill='rgba(255,255,255,0.18)'/%3E%3Cpath d='M250 820c36-120 110-180 150-180s114 60 150 180' fill='rgba(255,255,255,0.2)'/%3E%3Cpath d='M300 180c50-55 130-90 200-78 35 6 73 26 92 65-16-15-34-24-60-25-46-1-92 15-132 52-38 37-72 97-95 175-28-76-42-129-5-189z' fill='rgba(255,255,255,0.12)'/%3E%3C/svg%3E") center/cover no-repeat;
+      display: grid;
+      place-items: end center;
+    }
+
+    .portrait-badge {
+      margin-bottom: 1.3rem;
+      background: rgba(16, 8, 23, 0.34);
+      border: 1px solid rgba(255,255,255,0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 0.75rem 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    }
+
+    .portrait-wrap {
+      position: relative;
+      height: 100%;
+      min-height: 480px;
+      width: 100%;
+    }
+
+    .cat-gif {
+      display: block;
+      width: 76px;
+      height: 76px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 18px rgba(255, 137, 196, 0.38));
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .portrait-gif {
+      position: absolute;
+      right: -16px;
+      bottom: 28px;
+      z-index: 2;
+      transform: rotate(6deg);
+    }
+
+    .portrait-top-gif {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      z-index: 3;
+      width: 72px;
+      height: 72px;
+      transform: rotate(-14deg);
+    }
+
+    .title-gif {
+      display: inline-block;
+      width: 70px;
+      height: 70px;
+      vertical-align: middle;
+      margin: 0 0.3rem;
+      transform: translateY(-0.2rem);
+    }
+
+    .memory-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .memory-card::before,
+    .story-card::before,
+    .panel::before,
+    .letter::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 210, 232, 0.28), transparent 18%),
+        radial-gradient(circle at 80% 10%, rgba(255, 235, 182, 0.22), transparent 16%),
+        radial-gradient(circle at 85% 80%, rgba(215, 201, 255, 0.18), transparent 20%);
+    }
+
+    .memory-frame {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      align-items: center;
+      gap: 0.7rem;
+      padding: 0.7rem;
+      background: rgba(255,255,255,0.04);
+    }
+
+    .memory-gif {
+      width: 64px;
+      height: 64px;
+      opacity: 0.96;
+    }
+
+    .memory-card .memory-caption {
+      position: relative;
+      z-index: 1;
+    }
+
+    .memory-card .memory-photo {
+      border-radius: 1rem;
+    }
+
+    .section-intro h2,
+    .section-intro .section-eyebrow,
+    .section-text {
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      position: relative;
+      padding: 3rem 0;
+    }
+
+    .section-intro {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 1.5rem;
+      gap: 1rem;
+    }
+
+    .section-eyebrow {
+      color: var(--pink2);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      font-size: 0.76rem;
+    }
+
+    h2 {
+      margin: 0.4rem 0 0;
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+
+    .section-text {
+      max-width: 40rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .memory-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .memory-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1.3rem;
+      overflow: hidden;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    }
+
+    .memory-photo {
+      display: block;
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      background: linear-gradient(135deg, rgba(255,110,182,0.25), rgba(215,201,255,0.2));
+    }
+
+    .memory-caption {
+      padding: 0.9rem 1rem 1rem;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .story-card {
+      position: relative;
+      background: var(--card);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1.4rem;
+      padding: 1.4rem;
+      min-height: 220px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+      overflow: hidden;
+    }
+
+    .story-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -20% -45% 40%;
+      height: 200px;
+      background: radial-gradient(circle, rgba(255,110,182,0.25), transparent 60%);
+      pointer-events: none;
+    }
+
+    .story-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .story-card h3 {
+      margin: 0 0 0.6rem 0;
+      font-size: 1.3rem;
+    }
+
+    .story-card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .love-meter-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 1.3rem;
+      margin-top: 2.4rem;
+    }
+
+    .panel {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
+    }
+
+    .meter-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .meter-head h3 { margin: 0; font-size: 1.5rem; }
+
+    .meter-value {
+      color: var(--gold);
+      font-weight: 800;
+      font-size: 1.6rem;
+    }
+
+    .progress {
+      position: relative;
+      height: 18px;
+      border-radius: 999px;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .progress-bar {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 99%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--pink), #ffb3d5, #ffd166);
+      box-shadow: 0 10px 20px rgba(255,110,182,0.35);
+      transition: width 0.35s ease;
+    }
+
+    .meter-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .tag {
+      padding: 0.45rem 0.8rem;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--rose);
+      font-size: 0.8rem;
+    }
+
+    .mini-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.9rem;
+    }
+
+    .mini-list li {
+      display: flex;
+      align-items: start;
+      gap: 0.8rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .mini-list li::before {
+      content: "❤";
+      color: var(--pink2);
+      font-size: 1.1rem;
+    }
+
+    .timeline {
+      margin-top: 2rem;
+      display: grid;
+      gap: 1rem;
+    }
+
+    .time-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 1.2rem;
+      align-items: start;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1.2rem;
+      padding: 1rem 1.1rem;
+    }
+
+    .time-date {
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      font-size: 0.82rem;
+      padding-top: 0.2rem;
+    }
+
+    .time-item h4 {
+      margin: 0 0 0.35rem 0;
+      font-size: 1.15rem;
+    }
+
+    .time-item p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .message-box {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 1.3rem;
+      margin-top: 2.2rem;
+    }
+
+    .letter {
+      position: relative;
+      border-radius: 1.6rem;
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 1.5rem;
+      overflow: hidden;
+      min-height: 300px;
+    }
+
+    .letter::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,110,182,0.08), transparent 50%);
+      pointer-events: none;
+    }
+
+    .letter p {
+      position: relative;
+      z-index: 1;
+      color: var(--rose);
+      line-height: 1.9;
+      font-size: 1.04rem;
+    }
+
+    .letter-sign {
+      position: relative;
+      z-index: 1;
+      margin-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .check {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 1rem;
+      padding: 0.9rem 1rem;
+      color: var(--muted);
+    }
+
+    .check strong {
+      color: var(--text);
+    }
+
+    .check span {
+      font-size: 1.25rem;
+    }
+
+    .footer {
+      padding: 2.5rem 0 4rem;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    .floating-heart {
+      position: fixed;
+      z-index: 0;
+      pointer-events: none;
+      animation: floatUp linear forwards;
+      opacity: 0.9;
+      filter: drop-shadow(0 8px 15px rgba(255,110,182,0.35));
+      user-select: none;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(100px) scale(0.7) rotate(0deg);
+        opacity: 0;
+      }
+      15% { opacity: 1; }
+      100% {
+        transform: translateY(-100vh) scale(1.3) rotate(16deg);
+        opacity: 0;
+      }
+    }
+
+    body.locked {
+      overflow: hidden;
+    }
+
+    .lock-screen {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      z-index: 50;
+      padding: 1.5rem;
+      background:
+        radial-gradient(circle at top left, rgba(255,110,182,0.25), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(168,139,250,0.2), transparent 30%),
+        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 35%, var(--bg3) 100%);
+    }
+
+    .lock-screen.show {
+      display: grid;
+    }
+
+    .lock-card {
+      width: min(420px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 1.5rem;
+      padding: 1.5rem 1.4rem;
+      box-shadow: 0 28px 60px rgba(0,0,0,0.25);
+      text-align: center;
+    }
+
+    .lock-card h2 {
+      margin: 0 0 0.5rem;
+      font-size: clamp(1.8rem, 3vw, 2.2rem);
+    }
+
+    .lock-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      margin: 0 0 1rem;
+    }
+
+    .lock-input {
+      width: 100%;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--white);
+      border-radius: 0.9rem;
+      padding: 0.9rem 1rem;
+      font-size: 1rem;
+      margin-bottom: 0.9rem;
+    }
+
+    .lock-input::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+
+    .lock-message {
+      min-height: 1.3rem;
+      margin-bottom: 0.7rem;
+      color: #ffd6e7;
+      font-size: 0.9rem;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      background: rgba(10, 8, 18, 0.6);
+      backdrop-filter: blur(10px);
+      z-index: 30;
+      padding: 1.5rem;
+    }
+
+    .modal.open {
+      display: grid;
+    }
+
+    .modal-card {
+      width: min(620px, 100%);
+      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 1.5rem;
+      padding: 1.2rem 1.25rem 1.5rem;
+      box-shadow: 0 28px 60px rgba(0,0,0,0.25);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .modal-header h3 {
+      margin: 0;
+      font-size: 1.5rem;
+    }
+
+    .close-btn {
+      border: none;
+      background: rgba(255,255,255,0.06);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      color: white;
+      font-size: 1.4rem;
+      cursor: pointer;
+    }
+
+    .modal-card p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin: 0.7rem 0 1.15rem;
+    }
+
+    @media (max-width: 900px) {
+      .hero-inner,
+      .love-meter-wrap,
+      .message-box {
+        grid-template-columns: 1fr;
+      }
+
+      .story-grid,
+      .memory-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 1rem;
+      overflow: hidden;
+      background: rgba(255,255,255,0.05);
+      border: 2px solid rgba(255,255,255,0.1);
+      cursor: pointer;
+      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+      display: grid;
+      place-items: center;
+    }
+
+    .gallery-item:hover {
+      transform: scale(1.05);
+      border-color: var(--pink);
+      box-shadow: 0 15px 40px rgba(255, 110, 182, 0.25);
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .gallery-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 0.5rem;
+      color: var(--muted);
+      font-size: 2.5rem;
+      text-align: center;
+      width: 100%;
+      height: 100%;
+    }
+
+    .gallery-placeholder span {
+      font-size: 0.85rem;
+      opacity: 0.7;
+    }
+
+    @media (max-width: 560px) {
+      h1 {
+        font-size: 2.8rem;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .time-item {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        min-height: 420px;
+      }
+
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      }
+    }
+  </style>
+</head>
+<body class="locked">
+  <div class="lock-screen show" id="lockScreen" aria-hidden="false">
+    <div class="lock-card">
+      <h2>Tanggal Lahir DiasParker</h2>
+      <p>Masukkan password untuk membuka halaman cinta ini.</p>
+      <input id="passwordInput" class="lock-input" type="password" inputmode="numeric" placeholder="" aria-label="Password" />
+      <div id="lockMessage" class="lock-message" aria-live="polite"></div>
+      <button class="cta" id="unlockBtn">Buka halaman</button>
+    </div>
+  </div>
+
+  <div class="page-content">
+    <header>
+      <nav class="nav">
+        <div class="brand">
+          <div class="brand-mark">❤</div>
+          <span>Untuk Athifa</span>
+        </div>
+        <div class="nav-links">
+          <a href="#story">Cerita</a>
+          <a href="#love">Kasih</a>
+          <a href="#gallery">Galeri</a>
+          <a href="#letter">Surat</a>
+        </div>
+        <button class="cta" id="surpriseBtn">Buka suprise ✨</button>
+      </nav>
+    </header>
+
+    <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div>
+          <div class="eyebrow">💌 Cinta yang selalu aku bawa</div>
+          <h1>Untuk <span class="highlight">Athifa</span>,<br>yang paling aku sayang <img class="cat-gif title-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODdwOGtndXRibG5idW9mcTdtamJsZHZicDd6ajhiaWZzemg2eTBxaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Zl7u48zLVFgLpRwq6f/giphy.gif" alt="Love gif" />.</h1>
+          <p class="lead">
+            Di setiap detik, aku ingin kamu tahu: kamu adalah cahaya yang paling hangat, paling indah,
+            dan paling membuat hidupku terasa penuh arti. Terima kasih karena ada di hidupku, Athifa.
+          </p>
+
+          <div class="hero-actions">
+            <button class="cta" id="loveBtn">Sampaikan cintaku</button>
+            <a class="secondary" href="#letter">Baca surat</a>
+            <a class="creator-link" href="https://mute-olive-0mrvdmgo.edgeone.dev/" target="_blank" rel="noopener noreferrer">
+              <span>Website pembuat</span>
+              <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXRjOWd6M3AzbTd4bDc3cXFhY3JucGM2YmluNDloNmVteDRvMnlldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/rvRsdy1lsAnWR5IQxR/giphy.gif" alt="Website pembuat" />
+            </a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong id="daysTogether">33</strong>
+              <span>Hari bersamamu</span>
+            </div>
+            <div class="stat">
+              <strong>∞</strong>
+              <span>Rindu</span>
+            </div>
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Sayang kamu</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="portrait-wrap">
+            <img class="cat-gif portrait-top-gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bTZxdzdybDBrYXhpcHc5aDh4eHRkajQ4YTRnOXp1N2sxdXJpanV2bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/W2oKWbIYEioXgxVmEM/giphy.gif" alt="Gif dekorasi atas portrait" />
+            <div class="portrait">
+              <div class="portrait-badge">★ My favorite person</div>
+            </div>
+            <img class="cat-gif portrait-gif" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Kucing lucu" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="story">
+      <div class="container">
+        <div class="section-intro">
+          <div>
+            <div class="section-eyebrow">Kenapa kamu istimewa</div>
+            <h2>Alasan aku jatuh cinta padamu</h2>
+          </div>
+          <p class="section-text">
+            Setiap hal kecil dari kamu sudah berhasil menempati ruang paling hangat di hati aku.
+          </p>
+        </div>
+
+        <div class="story-grid">
+          <article class="story-card">
+            <div class="icon">✨</div>
+            <h3>Kehadirannya menenangkan</h3>
+            <p>Denganmu, dunia terasa lebih tenang, lebih indah, dan lebih ringan.</p>
+          </article>
+
+          <article class="story-card">
+            <div class="icon">🌷</div>
+            <h3>Senyum yang memikat</h3>
+            <p>Semua lelah hari ini hilang saat aku melihat senyummu yang tulus dan hangat.</p>
+          </article>
+
+          <article class="story-card">
+            <div class="icon">💫</div>
+            <h3>Hidupku jadi lebih berarti</h3>
+            <p>Kamu membawaku ke cara baru melihat cinta, harapan, dan masa depan yang lebih indah.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="memories">
+      <div class="container">
+        <div class="section-intro">
+          <div>
+            <div class="section-eyebrow">Kenang-kenangan</div>
+            <h2>Foto bersama kita</h2>
+          </div>
+          <p class="section-text">
+            Momen kecil yang akan selalu aku simpan dengan hati paling hangat.
+          </p>
+        </div>
+
+        <div class="memory-grid">
+          <article class="memory-card">
+            <div class="memory-frame">
+              <img class="memory-photo" src="https://cdn.discordapp.com/attachments/1310214947610951682/1537839680890863766/IMG-20260807-WA0010.jpg?ex=6a80804f&is=6a7f2ecf&hm=4cd0d6e620e42d342ddf70de43e0fcab7c7ffbc71391672ed4f458e1b6a56afd&" alt="Kenangan pertama 1" />
+              <img class="cat-gif memory-gif" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Kucing lucu" />
+            </div>
+            <div class="memory-caption">First fotbar.</div>
+          </article>
+
+          <article class="memory-card">
+            <div class="memory-frame">
+              <img class="memory-photo" src="https://cdn.discordapp.com/attachments/1310214947610951682/1537840106835152977/IMG-20260807-WA0014.jpg?ex=6a8080b5&is=6a7f2f35&hm=699086c21241f914e9f787031c17c5b30d0f84922303a8d2d3158a15637a355d&" alt="Kenangan pertama 2" />
+              <img class="cat-gif memory-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGR5Z3p1cHVuZ3hlcDByZmN6N3VoajdiN2gwcGNsZjhwMzcxczZrbSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/93mS3A87wfmOySC29W/giphy.gif" />
+            </div>
+            <div class="memory-caption">Fotbar lagi.</div>
+          </article>
+
+          <article class="memory-card">
+            <div class="memory-frame">
+              <img class="memory-photo" src="https://cdn.discordapp.com/attachments/1310214947610951682/1537840140217614529/IMG-20260807-WA0013.jpg?ex=6a8080bd&is=6a7f2f3d&hm=7be5dc00052cb84c7f971a35757225f0aa66de76383169ded898d054da1f830d&" alt="Kenangan pertama 3" />
+              <img class="cat-gif memory-gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NjZxY3N4bTNscnpkdHlyZjNkMm1vdWo4aHFsNXRpMDRwdnVpd283NyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ytu2GUYbvhz7zShGwS/giphy.gif" />
+            </div>
+            <div class="memory-caption">Fotbar lagi dan lagi wkwkwkkw.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="love">
+      <div class="container">
+        <div class="section-intro">
+          <div>
+            <div class="section-eyebrow">Cintaku untukmu</div>
+            <h2>Love meter</h2>
+          </div>
+          <p class="section-text">
+            Ini bukan sekadar angka, tapi seberapa besar rasa sayangku yang terus tumbuh tiap hari.
+          </p>
+        </div>
+
+        <div class="love-meter-wrap">
+          <div class="panel">
+            <div class="meter-head">
+              <h3>Level cintaku</h3>
+              <div class="meter-value" id="meterValue">99%</div>
+            </div>
+            <div class="progress">
+              <div class="progress-bar" id="progressBar"></div>
+            </div>
+            <div class="meter-tags">
+              <span class="tag">Tulus</span>
+              <span class="tag">Setia</span>
+              <span class="tag">Romantis</span>
+              <span class="tag">Penuh rindu</span>
+            </div>
+          </div>
+
+          <div class="panel">
+            <ul class="mini-list">
+              <li>Kamu adalah alasan kenapa aku ingin bangun pagi dengan hati yang lebih tenang.</li>
+              <li>Semua mimpi terasa lebih dekat ketika aku membayangkan kamu ada di sisi aku.</li>
+              <li>Aku ingin terus membuat kamu bahagia, bahkan dengan cara yang paling sederhana.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline">
+          <div class="time-item">
+            <div class="time-date">01</div>
+            <div>
+              <h4>Hari pertama aku sadar</h4>
+              <p>Perasaan itu muncul tanpa aku sadari, seperti sesuatu yang sudah siap tumbuh sejak lama.</p>
+            </div>
+          </div>
+
+          <div class="time-item">
+            <div class="time-date">02</div>
+            <div>
+              <h4>Hari saat kamu hadir</h4>
+              <p>Semua terasa lebih hidup, lebih cerah, dan lebih berwarna setelah kamu masuk ke hidupku.</p>
+            </div>
+          </div>
+
+          <div class="time-item">
+            <div class="time-date">03</div>
+            <div>
+              <h4>Hari yang aku nantikan</h4>
+              <p>Setiap hari aku berharap bisa ada di sampingmu, melihat senyummu, dan menjaga hati kamu.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery">
+      <div class="container">
+        <div class="section-intro">
+          <div>
+            <div class="section-eyebrow">Galeri</div>
+            <h2>Koleksi momen indah lainnya</h2>
+          </div>
+          <p class="section-text">
+            Gallery fiture ini masih dalam tahap pengembangan, jadi untuk sementara hanya menampilkan placeholder. Nantikan update selanjutnya!
+          </p>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 1</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 2</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 3</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 4</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 5</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 6</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 7</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 8</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 9</span>
+            </div>
+          </div>
+
+          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
+            <div class="gallery-placeholder">
+              <span>🖼️</span>
+              <span>Foto 10</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="letter">
+      <div class="container">
+        <div class="section-intro">
+          <div>
+            <div class="section-eyebrow">Surat untukmu</div>
+            <h2>Pesan hati yang paling sederhana</h2>
+          </div>
+          <p class="section-text">
+            Aku menulis ini sambil berharap kamu tahu betapa besar tempatmu di hatiku.
+          </p>
+        </div>
+
+        <div class="message-box">
+          <div class="letter">
+            <p>
+              Athifa, <br><br>
+              Terima kasih karena kamu adalah rumah paling nyaman di dalam hidupku. Aku tidak selalu pandai
+              berkata manis, tapi aku selalu berusaha menunjukkan dengan cara yang aku punya: dengan perhatian,
+              dengan doa, dengan rasa sayang yang terus tumbuh setiap hari. <br><br>
+              Kalau boleh, aku ingin menghabiskan lebih banyak waktu bersamamu, melihat senyummu,
+              mendengar suaramu, dan menjaga kamu dengan sepenuh hati. Aku ingin kamu tahu, kamu benar-benar
+              istimewa. Dan sampai kapan pun, aku akan tetap memilihmu, dengan segala versi diriku yang paling jujur.
+            </p>
+            <div class="letter-sign">
+              <span>Dengan cinta,</span>
+              <span>❤ Kamu</span>
+            </div>
+          </div>
+
+          <div class="checklist">
+            <div class="check"><strong>1. Kamu adalah alasan aku tersenyum</strong><span>😊</span></div>
+            <div class="check"><strong>2. Aku ingin selalu dekat denganmu</strong><span>🤍</span></div>
+            <div class="check"><strong>3. Aku ingin melihatmu bahagia</strong><span>🌷</span></div>
+            <div class="check"><strong>4. Aku ingin menjadi tempatmu pulang</strong><span>🏡</span></div>
+            <div class="check"><strong>5. Aku akan terus menyayangimu</strong><span>💖</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+    <footer class="footer">
+      <div class="container">
+        Dibuat dengan cinta tulus untuk Athifa — selalu, selamanya, dan di setiap hari yang datang.
+      </div>
+    </footer>
+  </div>
+
+  <div class="modal" id="surpriseModal" aria-hidden="true">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>✨ Kado kecil untuk Athifa</h3>
+        <button class="close-btn" id="closeModal" aria-label="Tutup">×</button>
+      </div>
+      <p>
+        Kamu tidak hanya cantik, kamu juga adalah alasan aku percaya bahwa cinta itu bisa terasa lembut,
+        tenang, dan sangat nyata. Aku ingin semua harimu terasa hangat seperti pelukan yang selalu aku bayangkan.
+      </p>
+      <p>
+        Jangan pernah ragu, Athifa. Kamu sangat dicintai. Sangat-sangat dicintai, bahkan ketika kata-kata
+        belum cukup untuk menggambarkan rasa itu.
+      </p>
+      <button class="cta" id="modalLoveBtn">Aku mau terus sayang kamu</button>
+    </div>
+  </div>
+
+  <script>
+    const bgMusic = document.getElementById('bgMusic');
+    function startBackgroundMusic() {
+      if (!bgMusic) return;
+      bgMusic.volume = 0.5;
+      bgMusic.loop = true;
+      bgMusic.muted = false;
+      bgMusic.play().catch(() => {});
+    }
+
+    if (bgMusic) {
+      bgMusic.addEventListener('ended', () => {
+        bgMusic.currentTime = 0;
+        bgMusic.play().catch(() => {});
+      });
+      window.addEventListener('load', startBackgroundMusic, { once: true });
+      document.addEventListener('pointerdown', startBackgroundMusic, { once: true });
+      document.addEventListener('touchstart', startBackgroundMusic, { once: true });
+    }
+
+    const lockScreen = document.getElementById('lockScreen');
+    const passwordInput = document.getElementById('passwordInput');
+    const unlockBtn = document.getElementById('unlockBtn');
+    const lockMessage = document.getElementById('lockMessage');
+    const correctPassword = '251110';
+
+    function unlockPage() {
+      document.body.classList.remove('locked');
+      lockScreen.classList.remove('show');
+      lockScreen.setAttribute('aria-hidden', 'true');
+      passwordInput.value = '';
+      lockMessage.textContent = '';
+    }
+
+    function checkPassword() {
+      const value = passwordInput.value.trim();
+      if (value === correctPassword) {
+        unlockPage();
+      } else {
+        lockMessage.textContent = 'Password salah. Coba lagi ya!';
+        passwordInput.focus();
+      }
+    }
+
+    unlockBtn.addEventListener('click', checkPassword);
+    passwordInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') checkPassword();
+    });
+
+    const startDate = new Date('2026-07-11');
+    const today = new Date();
+    const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
+    document.getElementById('daysTogether').textContent = diffDays;
+
+    const meterValue = document.getElementById('meterValue');
+    const progressBar = document.getElementById('progressBar');
+    let currentPercent = 99;
+    meterValue.textContent = currentPercent + '%';
+    progressBar.style.width = currentPercent + '%';
+
+    function burstHearts() {
+      for (let i = 0; i < 18; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'floating-heart';
+        heart.textContent = ['❤', '💖', '💗', '💞', '✨'][Math.floor(Math.random() * 5)];
+        heart.style.left = Math.random() * window.innerWidth + 'px';
+        heart.style.fontSize = (Math.random() * 22 + 18) + 'px';
+        heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
+        heart.style.opacity = '0.9';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 8000);
+      }
+    }
+
+    setInterval(burstHearts, 1800);
+
+    // Gallery setup - edit URL links di bawah ini
+    const galleryItems = document.querySelectorAll('.gallery-item');
+    const galleryLinks = [
+      'https://cdn.discordapp.com/attachments/1310214947610951682/1538437012779040798/WA_1786861230477.jpg?ex=6a82ac9e&is=6a815b1e&hm=a320eaf50d922ce18ad8575a6a21906c73306f99b8ffedd998a832112e975fab', // Foto 1
+      'https://cdn.discordapp.com/attachments/1310214947610951682/1538438143999615086/VID-20260728-WA0004.mp4?ex=6a82adac&is=6a815c2c&hm=21e3ac92e03fe1a235c138f86d47894fda2fede8b8bd60a48205fde00527efe7', // Video 2
+      'https://cdn.discordapp.com/attachments/1310214947610951682/1538440110599573534/IMG-20260721-WA0064.jpg?ex=6a82af81&is=6a815e01&hm=217a827ed7b8bd6b4be121e1a5509b4ecbd4b03ea4c5d920a0fbe9ac27f1576b', // Foto 3
+      'https://cdn.discordapp.com/attachments/1310214947610951682/1538440801766342768/VID-20260802-WA0081.mp4?ex=6a82b025&is=6a815ea5&hm=70b9d3c9f8dfaff6c8f36d21e8972139511d46a0ba8e9ef6b1f8a7421e085ddc', // Video 4
+      '', // Foto 5 - masukkan URL
+      '', // Foto 6 - masukkan URL
+      '', // Foto 7 - masukkan URL
+      '', // Foto 8 - masukkan URL
+      '', // Foto 9 - masukkan URL
+      ''  // Foto 10 - masukkan URL
+    ];
+
+    function isVideoUrl(url) {
+      return /\.(mp4|webm|ogg|mov|m4v)(\?|$)/i.test(url) || /video/i.test(url);
+    }
+
+    galleryItems.forEach((item, index) => {
+      if (galleryLinks[index]) {
+        const placeholder = item.querySelector('.gallery-placeholder');
+        const mediaUrl = galleryLinks[index];
+        const isVideo = isVideoUrl(mediaUrl);
+        const media = isVideo ? document.createElement('video') : document.createElement('img');
+
+        media.src = mediaUrl;
+        media.alt = `Galeri ${index + 1}`;
+        media.style.width = '100%';
+        media.style.height = '100%';
+        media.style.objectFit = 'cover';
+
+        if (isVideo) {
+          media.controls = true;
+          media.autoplay = true;
+          media.loop = true;
+          media.muted = true;
+          media.playsInline = true;
+          media.preload = 'auto';
+          media.setAttribute('playsinline', 'true');
+          media.setAttribute('webkit-playsinline', 'true');
+          media.setAttribute('autoplay', 'autoplay');
+          media.setAttribute('muted', 'muted');
+          media.setAttribute('loop', 'loop');
+          media.addEventListener('ended', () => {
+            media.currentTime = 0;
+            media.play().catch(() => {});
+          });
+          media.onloadeddata = () => {
+            if (placeholder) placeholder.style.display = 'none';
+            item.style.cursor = 'pointer';
+            media.play().catch(() => {});
+          };
+          media.onerror = () => {
+            media.style.display = 'none';
+            if (placeholder) placeholder.style.display = 'flex';
+          };
+        } else {
+          media.onerror = () => {
+            media.style.display = 'none';
+            if (placeholder) placeholder.style.display = 'flex';
+          };
+          media.onload = () => {
+            if (placeholder) placeholder.style.display = 'none';
+            item.style.cursor = 'pointer';
+          };
+        }
+
+        item.innerHTML = '';
+        item.appendChild(media);
+        item.dataset.link = mediaUrl;
+        item.style.cursor = 'pointer';
+      }
+    });
+
+    const surpriseBtn = document.getElementById('surpriseBtn');
+    const closeModal = document.getElementById('closeModal');
+    const surpriseModal = document.getElementById('surpriseModal');
+    const loveBtn = document.getElementById('loveBtn');
+    const modalLoveBtn = document.getElementById('modalLoveBtn');
+
+    function openModal() {
+      surpriseModal.classList.add('open');
+      surpriseModal.setAttribute('aria-hidden', 'false');
+      burstHearts();
+    }
+
+    function closeModalWindow() {
+      surpriseModal.classList.remove('open');
+      surpriseModal.setAttribute('aria-hidden', 'true');
+    }
+
+    surpriseBtn.addEventListener('click', openModal);
+    loveBtn.addEventListener('click', openModal);
+    closeModal.addEventListener('click', closeModalWindow);
+    modalLoveBtn.addEventListener('click', () => {
+      currentPercent = Math.min(100, currentPercent + 1);
+      meterValue.textContent = currentPercent + '%';
+      progressBar.style.width = currentPercent + '%';
+      burstHearts();
+      closeModalWindow();
+    });
+
+    surpriseModal.addEventListener('click', (e) => {
+      if (e.target === surpriseModal) closeModalWindow();
+    });
+
+    const audioCtx = window.AudioContext || window.webkitAudioContext;
+    if (audioCtx) {
+      const ctx = new audioCtx();
+      function playTone(freq, duration, type='sine', volume=0.04) {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.value = freq;
+        gain.gain.value = volume;
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
+        osc.stop(ctx.currentTime + duration);
+      }
+
+      function playLoveMelody() {
+        if (ctx.state === 'suspended') ctx.resume();
+        const melody = [440, 554.37, 659.25, 554.37, 659.25, 783.99];
+        melody.forEach((freq, idx) => {
+          setTimeout(() => playTone(freq, 0.22, 'triangle', 0.045), idx * 180);
+        });
+      }
+
+      loveBtn.addEventListener('click', playLoveMelody);
+      surpriseBtn.addEventListener('click', playLoveMelody);
+    }
+  </script>
+  <style>
+    .credit {
+      position: fixed;
+      bottom: 1rem;
+      right: 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: #00d4ff;
+      text-shadow: 0 0 10px #00d4ff, 0 0 20px rgba(0, 212, 255, 0.6);
+      z-index: 10;
+    }
+  </style>
+  <div class="credit">Made By DiasParker</div>
+</body>
+</html>
