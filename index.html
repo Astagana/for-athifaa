@@ -1,1028 +1,148 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Untuk Athifa, Cintaku</title>
-  <style>
-    :root {
-      --bg1: #130b1d;
-      --bg2: #2e1039;
-      --bg3: #4d1d46;
-      --pink: #ff6eb6;
-      --pink2: #ff9ec9;
-      --rose: #ffd6e7;
-      --gold: #ffd166;
-      --lavender: #d7c9ff;
-      --white: #fff9fd;
-      --text: #fdf2f8;
-      --muted: #f8d6ea;
-      --card: rgba(255,255,255,0.08);
-      --cardStrong: rgba(255,255,255,0.13);
-      --shadow: rgba(255, 86, 160, 0.35);
-    }
-
-    * { box-sizing: border-box; }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Playfair Display", "Great Vibes", Georgia, serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,110,182,0.25), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(168,139,250,0.2), transparent 30%),
-        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 35%, var(--bg3) 100%);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(255,255,255,0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px);
-      background-size: 32px 32px;
-      pointer-events: none;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .container {
-      width: min(1120px, calc(100% - 2rem));
-      margin: 0 auto;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(18px);
-      background: rgba(19, 11, 29, 0.24);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 72px;
-      gap: 1rem;
-      width: min(1120px, calc(100% - 2rem));
-      margin: 0 auto;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, var(--pink), #ffb7d9);
-      box-shadow: 0 10px 25px rgba(255, 110, 182, 0.5);
-      font-size: 1.2rem;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.25rem;
-      font-size: 0.96rem;
-      color: var(--muted);
-    }
-
-    .nav-links a {
-      opacity: 0.9;
-      transition: opacity 0.25s ease;
-    }
-
-    .nav-links a:hover { opacity: 1; }
-
-    .cta {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.6rem;
-      background: linear-gradient(135deg, var(--pink), #ff8cc6);
-      color: white;
-      border: none;
-      padding: 0.9rem 1.4rem;
-      border-radius: 999px;
-      font-weight: 700;
-      box-shadow: 0 14px 30px var(--shadow);
-      cursor: pointer;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .cta:hover {
-      transform: translateY(-2px) scale(1.01);
-      box-shadow: 0 18px 35px rgba(255, 110, 182, 0.5);
-    }
-
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding: 4rem 0 2rem;
-    }
-
-    .hero-inner {
-      width: min(1120px, calc(100% - 2rem));
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 2rem;
-      position: relative;
-      z-index: 1;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.5rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(255,255,255,0.15);
-      color: var(--rose);
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      margin-bottom: 1rem;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(3rem, 5vw, 6rem);
-      line-height: 0.95;
-      letter-spacing: -0.05em;
-      text-shadow: 0 16px 40px rgba(255,128,191,0.18);
-    }
-
-    .highlight {
-      background: linear-gradient(135deg, #fff0f7, #ffd6e7, #ffc2dd);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .lead {
-      margin-top: 1.2rem;
-      max-width: 38rem;
-      font-size: 1.08rem;
-      line-height: 1.8;
-      color: var(--muted);
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 1.7rem;
-    }
-
-    .secondary {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.13);
-      color: var(--white);
-      padding: 0.9rem 1.4rem;
-      border-radius: 999px;
-      font-weight: 700;
-      cursor: pointer;
-      transition: transform 0.2s ease;
-    }
-
-    .secondary:hover { transform: translateY(-2px); }
-
-    .creator-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.7rem;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.13);
-      color: var(--white);
-      padding: 0.85rem 1.2rem;
-      border-radius: 999px;
-      font-weight: 700;
-      transition: transform 0.2s ease, border-color 0.2s ease;
-      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
-    }
-
-    .creator-link:hover {
-      transform: translateY(-2px);
-      border-color: rgba(255,255,255,0.25);
-    }
-
-    .creator-link img {
-      width: 28px;
-      height: 28px;
-      object-fit: cover;
-      border-radius: 50%;
-      display: block;
-    }
-
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(120px, 1fr));
-      gap: 1rem;
-      margin-top: 2rem;
-      max-width: 450px;
-    }
-
-    .stat {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 1rem;
-      padding: 1rem 0.8rem;
-      text-align: center;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-    }
-
-    .stat strong {
-      display: block;
-      font-size: clamp(1.5rem, 2vw, 2rem);
-      color: var(--gold);
-    }
-
-    .stat span {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .hero-card {
-      position: relative;
-      justify-self: center;
-      width: min(100%, 420px);
-      min-height: 520px;
-      padding: 1rem;
-      border-radius: 2rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.12);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.2);
-    }
-
-    .portrait {
-      position: relative;
-      height: 100%;
-      min-height: 480px;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      background:
-        linear-gradient(180deg, rgba(77,29,70,0.15), rgba(19,11,29,0.45)),
-        url("https://cdn.phototourl.com/free/2026-08-23-eb552e21-85d4-461a-a7a2-aec4079f6259.jpg") center/cover no-repeat;
-      display: grid;
-      place-items: end center;
-    }
-
-    .portrait-badge {
-      margin-bottom: 1.3rem;
-      background: rgba(16, 8, 23, 0.34);
-      border: 1px solid rgba(255,255,255,0.15);
-      backdrop-filter: blur(10px);
-      border-radius: 999px;
-      padding: 0.75rem 1rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      color: #fff;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-
-    .portrait-wrap {
-      position: relative;
-      height: 100%;
-      min-height: 480px;
-      width: 100%;
-    }
-
-    .cat-gif {
-      display: block;
-      width: 76px;
-      height: 76px;
-      object-fit: contain;
-      filter: drop-shadow(0 10px 18px rgba(255, 137, 196, 0.38));
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .portrait-gif {
-      position: absolute;
-      right: -16px;
-      bottom: 28px;
-      z-index: 2;
-      transform: rotate(6deg);
-    }
-
-    .portrait-top-gif {
-      position: absolute;
-      left: 10px;
-      top: 10px;
-      z-index: 3;
-      width: 72px;
-      height: 72px;
-      transform: rotate(-14deg);
-    }
-
-    .title-gif {
-      display: inline-block;
-      width: 70px;
-      height: 70px;
-      vertical-align: middle;
-      margin: 0 0.3rem;
-      transform: translateY(-0.2rem);
-    }
-
-    .memory-card {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .memory-card::before,
-    .story-card::before,
-    .panel::before,
-    .letter::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      background:
-        radial-gradient(circle at 15% 20%, rgba(255, 210, 232, 0.28), transparent 18%),
-        radial-gradient(circle at 80% 10%, rgba(255, 235, 182, 0.22), transparent 16%),
-        radial-gradient(circle at 85% 80%, rgba(215, 201, 255, 0.18), transparent 20%);
-    }
-
-    .memory-frame {
-      position: relative;
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      align-items: center;
-      gap: 0.7rem;
-      padding: 0.7rem;
-      background: rgba(255,255,255,0.04);
-    }
-
-    .memory-gif {
-      width: 64px;
-      height: 64px;
-      opacity: 0.96;
-    }
-
-    .memory-card .memory-caption {
-      position: relative;
-      z-index: 1;
-    }
-
-    .memory-card .memory-photo {
-      border-radius: 1rem;
-    }
-
-    .section-intro h2,
-    .section-intro .section-eyebrow,
-    .section-text {
-      position: relative;
-      z-index: 1;
-    }
-
-    section {
-      position: relative;
-      padding: 3rem 0;
-    }
-
-    .section-intro {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      margin-bottom: 1.5rem;
-      gap: 1rem;
-    }
-
-    .section-eyebrow {
-      color: var(--pink2);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      font-weight: 700;
-      font-size: 0.76rem;
-    }
-
-    h2 {
-      margin: 0.4rem 0 0;
-      font-size: clamp(2rem, 3vw, 3rem);
-      letter-spacing: -0.05em;
-    }
-
-    .section-text {
-      max-width: 40rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin: 0;
-    }
-
-    .story-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.2rem;
-      margin-top: 2rem;
-    }
-
-    .memory-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 1.2rem;
-      margin-top: 2rem;
-    }
-
-    .memory-card {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 1.3rem;
-      overflow: hidden;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-    }
-
-    .memory-photo {
-      display: block;
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      background: linear-gradient(135deg, rgba(255,110,182,0.25), rgba(215,201,255,0.2));
-    }
-
-    .memory-caption {
-      padding: 0.9rem 1rem 1rem;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.95rem;
-    }
-
-    .story-card {
-      position: relative;
-      background: var(--card);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 1.4rem;
-      padding: 1.4rem;
-      min-height: 220px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-      overflow: hidden;
-    }
-
-    .story-card::before {
-      content: "";
-      position: absolute;
-      inset: auto -20% -45% 40%;
-      height: 200px;
-      background: radial-gradient(circle, rgba(255,110,182,0.25), transparent 60%);
-      pointer-events: none;
-    }
-
-    .story-card .icon {
-      font-size: 2rem;
-      margin-bottom: 0.75rem;
-    }
-
-    .story-card h3 {
-      margin: 0 0 0.6rem 0;
-      font-size: 1.3rem;
-    }
-
-    .story-card p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .love-meter-wrap {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 1.3rem;
-      margin-top: 2.4rem;
-    }
-
-    .panel {
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 1.5rem;
-      padding: 1.5rem;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.12);
-    }
-
-    .meter-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 1rem;
-      margin-bottom: 1rem;
-    }
-
-    .meter-head h3 { margin: 0; font-size: 1.5rem; }
-
-    .meter-value {
-      color: var(--gold);
-      font-weight: 800;
-      font-size: 1.6rem;
-    }
-
-    .progress {
-      position: relative;
-      height: 18px;
-      border-radius: 999px;
-      overflow: hidden;
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .progress-bar {
-      position: absolute;
-      inset: 0 auto 0 0;
-      width: 99%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, var(--pink), #ffb3d5, #ffd166);
-      box-shadow: 0 10px 20px rgba(255,110,182,0.35);
-      transition: width 0.35s ease;
-    }
-
-    .meter-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 1rem;
-    }
-
-    .tag {
-      padding: 0.45rem 0.8rem;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: var(--rose);
-      font-size: 0.8rem;
-    }
-
-    .mini-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      display: grid;
-      gap: 0.9rem;
-    }
-
-    .mini-list li {
-      display: flex;
-      align-items: start;
-      gap: 0.8rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .mini-list li::before {
-      content: "❤";
-      color: var(--pink2);
-      font-size: 1.1rem;
-    }
-
-    .timeline {
-      margin-top: 2rem;
-      display: grid;
-      gap: 1rem;
-    }
-
-    .time-item {
-      position: relative;
-      display: grid;
-      grid-template-columns: 100px 1fr;
-      gap: 1.2rem;
-      align-items: start;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 1.2rem;
-      padding: 1rem 1.1rem;
-    }
-
-    .time-date {
-      color: var(--gold);
-      font-weight: 800;
-      letter-spacing: 0.05em;
-      font-size: 0.82rem;
-      padding-top: 0.2rem;
-    }
-
-    .time-item h4 {
-      margin: 0 0 0.35rem 0;
-      font-size: 1.15rem;
-    }
-
-    .time-item p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    .message-box {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 1.3rem;
-      margin-top: 2.2rem;
-    }
-
-    .letter {
-      position: relative;
-      border-radius: 1.6rem;
-      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
-      border: 1px solid rgba(255,255,255,0.1);
-      padding: 1.5rem;
-      overflow: hidden;
-      min-height: 300px;
-    }
-
-    .letter::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255,110,182,0.08), transparent 50%);
-      pointer-events: none;
-    }
-
-    .letter p {
-      position: relative;
-      z-index: 1;
-      color: var(--rose);
-      line-height: 1.9;
-      font-size: 1.04rem;
-    }
-
-    .letter-sign {
-      position: relative;
-      z-index: 1;
-      margin-top: 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      color: var(--text);
-      font-weight: 700;
-    }
-
-    .checklist {
-      display: grid;
-      gap: 0.8rem;
-    }
-
-    .check {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 1rem;
-      padding: 0.9rem 1rem;
-      color: var(--muted);
-    }
-
-    .check strong {
-      color: var(--text);
-    }
-
-    .check span {
-      font-size: 1.25rem;
-    }
-
-    .footer {
-      padding: 2.5rem 0 4rem;
-      text-align: center;
-      color: var(--muted);
-    }
-
-    .floating-heart {
-      position: fixed;
-      z-index: 0;
-      pointer-events: none;
-      animation: floatUp linear forwards;
-      opacity: 0.9;
-      filter: drop-shadow(0 8px 15px rgba(255,110,182,0.35));
-      user-select: none;
-    }
-
-    @keyframes floatUp {
-      0% {
-        transform: translateY(100px) scale(0.7) rotate(0deg);
-        opacity: 0;
-      }
-      15% { opacity: 1; }
-      100% {
-        transform: translateY(-100vh) scale(1.3) rotate(16deg);
-        opacity: 0;
-      }
-    }
-
-    body.locked {
-      overflow: hidden;
-    }
-
-    .lock-screen {
-      position: fixed;
-      inset: 0;
-      display: none;
-      place-items: center;
-      z-index: 50;
-      padding: 1.5rem;
-      background:
-        radial-gradient(circle at top left, rgba(255,110,182,0.25), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(168,139,250,0.2), transparent 30%),
-        linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 35%, var(--bg3) 100%);
-    }
-
-    .lock-screen.show {
-      display: grid;
-    }
-
-    .lock-card {
-      width: min(420px, 100%);
-      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 1.5rem;
-      padding: 1.5rem 1.4rem;
-      box-shadow: 0 28px 60px rgba(0,0,0,0.25);
-      text-align: center;
-    }
-
-    .lock-card h2 {
-      margin: 0 0 0.5rem;
-      font-size: clamp(1.8rem, 3vw, 2.2rem);
-    }
-
-    .lock-card p {
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0 0 1rem;
-    }
-
-    .lock-input {
-      width: 100%;
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.05);
-      color: var(--white);
-      border-radius: 0.9rem;
-      padding: 0.9rem 1rem;
-      font-size: 1rem;
-      margin-bottom: 0.9rem;
-    }
-
-    .lock-input::placeholder {
-      color: rgba(255,255,255,0.5);
-    }
-
-    .lock-message {
-      min-height: 1.3rem;
-      margin-bottom: 0.7rem;
-      color: #ffd6e7;
-      font-size: 0.9rem;
-    }
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      display: none;
-      place-items: center;
-      background: rgba(10, 8, 18, 0.6);
-      backdrop-filter: blur(10px);
-      z-index: 30;
-      padding: 1.5rem;
-    }
-
-    .modal.open {
-      display: grid;
-    }
-
-    .modal-card {
-      width: min(620px, 100%);
-      background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.04));
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 1.5rem;
-      padding: 1.2rem 1.25rem 1.5rem;
-      box-shadow: 0 28px 60px rgba(0,0,0,0.25);
-    }
-
-    .modal-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-    }
-
-    .modal-header h3 {
-      margin: 0;
-      font-size: 1.5rem;
-    }
-
-    .close-btn {
-      border: none;
-      background: rgba(255,255,255,0.06);
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      color: white;
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
-
-    .modal-card p {
-      color: var(--muted);
-      line-height: 1.8;
-      margin: 0.7rem 0 1.15rem;
-    }
-
-    @media (max-width: 900px) {
-      .hero-inner,
-      .love-meter-wrap,
-      .message-box {
-        grid-template-columns: 1fr;
-      }
-
-      .story-grid,
-      .memory-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .nav-links {
-        display: none;
-      }
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin-top: 2rem;
-    }
-
-    .gallery-item {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 1;
-      border-radius: 1rem;
-      overflow: hidden;
-      background: rgba(255,255,255,0.05);
-      border: 2px solid rgba(255,255,255,0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-      display: grid;
-      place-items: center;
-    }
-
-    .gallery-item:hover {
-      transform: scale(1.05);
-      border-color: var(--pink);
-      box-shadow: 0 15px 40px rgba(255, 110, 182, 0.25);
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    .gallery-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 0.5rem;
-      color: var(--muted);
-      font-size: 2.5rem;
-      text-align: center;
-      width: 100%;
-      height: 100%;
-    }
-
-    .gallery-placeholder span {
-      font-size: 0.85rem;
-      opacity: 0.7;
-    }
-
-    @media (max-width: 560px) {
-      h1 {
-        font-size: 2.8rem;
-      }
-
-      .stats {
-        grid-template-columns: 1fr;
-      }
-
-      .time-item {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-card {
-        min-height: 420px;
-      }
-
-      .gallery-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      }
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#130b1d" />
+<meta name="description" content="Halaman kecil buat Athifa." />
+<title>Untuk Athifa, Cintaku</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="style.css" />
 </head>
-<body class="locked">
-  <div class="lock-screen show" id="lockScreen" aria-hidden="false">
-    <div class="lock-card">
-      <h2>Tanggal Lahir DiasParker</h2>
-      <p>Masukkan password untuk membuka halaman cinta ini.</p>
-      <input id="passwordInput" class="lock-input" type="password" inputmode="numeric" placeholder="" aria-label="Password" />
-      <div id="lockMessage" class="lock-message" aria-live="polite"></div>
-      <button class="cta" id="unlockBtn">Buka halaman</button>
-    </div>
-  </div>
+<body>
 
-  <div class="page-content">
-    <header>
-      <nav class="nav">
-        <div class="brand">
-          <div class="brand-mark">❤</div>
-          <span>Untuk Athifa</span>
-        </div>
-        <div class="nav-links">
-          <a href="#story">Cerita</a>
-          <a href="#love">Kasih</a>
-          <a href="#gallery">Galeri</a>
-          <a href="#letter">Surat</a>
-        </div>
-        <button class="cta" id="surpriseBtn">Buka suprise ✨</button>
-      </nav>
+<canvas id="heartCanvas" aria-hidden="true"></canvas>
+  
+<!-- ============ OPENING / GERBANG ============ -->
+<div class="gate" id="gate">
+  <div class="gate-card">
+    <span class="gate-eyebrow">💌 sebuah halaman kecil</span>
+    <h1>Ini website dibuat untuk <span>Athifa putri, sayangku.</span></h1>
+    <button class="gate-btn" id="gateBtn" type="button">
+      KLIKK INII KALOO MAU MASUKK 😜
+    </button>
+    <p class="gate-hint">pelan-pelan aja, lagunya nyala sendiri kok 🎶</p>
+  </div>
+</div>
+
+<div class="app" id="app">
+
+  <!-- ============ SIDEBAR ============ -->
+  <aside class="sidebar" id="sidebar">
+        <div class="sidebar-head">
+      <a class="logo" href="#" data-page="home" aria-label="Ke beranda">
+        <span class="logo-mark">
+          <svg viewBox="0 0 100 100" aria-hidden="true">
+            <defs>
+              <linearGradient id="heartGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#ffd6e7"/>
+                <stop offset="50%" stop-color="#ff6eb6"/>
+                <stop offset="100%" stop-color="#ffd166"/>
+              </linearGradient>
+            </defs>
+            <path class="heart-path" d="M50 86 C 20 64, 4 46, 4 30 C 4 16, 15 8, 27 8 C 38 8, 46 15, 50 24 C 54 15, 62 8, 73 8 C 85 8, 96 16, 96 30 C 96 46, 80 64, 50 86 Z"/>
+          </svg>
+        </span>
+        <span class="logo-caption">untuk athifa</span>
+      </a>
+      <p class="logo-sub">halaman kecil<br>yang aku bikin cuma buat kamu</p>
+    </div>
+
+
+    <nav class="side-nav" aria-label="Navigasi utama">
+      <button type="button" class="is-active" data-page="home"><span class="nav-ico">🏠</span> Beranda</button>
+      <button type="button" data-page="story"><span class="nav-ico">✨</span> Cerita</button>
+      <button type="button" data-page="memories"><span class="nav-ico">📸</span> Kenangan</button>
+      <button type="button" data-page="love"><span class="nav-ico">💗</span> Kasih</button>
+      <button type="button" data-page="gallery"><span class="nav-ico">🖼️</span> Galeri</button>
+      <button type="button" data-page="letter"><span class="nav-ico">💌</span> Surat</button>
+    </nav>
+
+        <div class="sidebar-foot">
+      <button type="button" class="music-btn" id="musicBtn" aria-pressed="false">
+        <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="music-label">Putar lagu kita</span>
+      </button>
+      <button type="button" class="cta ghost small" id="surpriseBtn">Buka suprise ✨</button>
+      <span class="side-credit">Made By DiasParker</span>
+    </div>
+
+  </aside>
+  <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+  <!-- ============ STAGE / PAGES ============ -->
+  <main class="stage" id="stage">
+        <header class="mobile-bar">
+      <button type="button" class="menu-toggle" id="menuToggle" aria-label="Buka menu">
+        <svg class="menu-heart" viewBox="0 0 100 100" aria-hidden="true">
+          <defs>
+            <linearGradient id="menuHeartGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#ffd6e7"/>
+              <stop offset="55%" stop-color="#ff6eb6"/>
+              <stop offset="100%" stop-color="#ffd166"/>
+            </linearGradient>
+          </defs>
+          <path d="M50 86 C 20 64, 4 46, 4 30 C 4 16, 15 8, 27 8 C 38 8, 46 15, 50 24 C 54 15, 62 8, 73 8 C 85 8, 96 16, 96 30 C 96 46, 80 64, 50 86 Z"/>
+        </svg>
+        <span class="menu-toggle-text">Menu</span>
+      </button>
+      <span class="mobile-title">Untuk Athifa</span>
+      <button type="button" class="music-btn mini" id="musicBtnMobile" aria-pressed="false" aria-label="Putar lagu">♪</button>
     </header>
 
-    <main>
-    <section class="hero">
-      <div class="hero-inner">
-        <div>
-          <div class="eyebrow">💌 Cinta yang selalu aku bawa</div>
-          <h1>Untuk <span class="highlight">Athifa</span>,<br>yang paling aku sayang <img class="cat-gif title-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODdwOGtndXRibG5idW9mcTdtamJsZHZicDd6ajhiaWZzemg2eTBxaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Zl7u48zLVFgLpRwq6f/giphy.gif" alt="Love gif" />.</h1>
-          <p class="lead">
-            Di setiap detik, aku ingin kamu tahu: kamu adalah cahaya yang paling hangat, paling indah,
-            dan paling membuat hidupku terasa penuh arti. Terima kasih karena ada di hidupku, Athifa.
-          </p>
 
-          <div class="hero-actions">
-            <button class="cta" id="loveBtn">Sampaikan cintaku</button>
-            <a class="secondary" href="#letter">Baca surat</a>
-            <a class="creator-link" href="https://diastraa.vercel.app/" target="_blank" rel="noopener noreferrer">
-              <span>Website pembuat</span>
-              <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXRjOWd6M3AzbTd4bDc3cXFhY3JucGM2YmluNDloNmVteDRvMnlldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/rvRsdy1lsAnWR5IQxR/giphy.gif" alt="Website pembuat" />
-            </a>
+    <!-- ---------- BERANDA ---------- -->
+    <section class="page active" id="page-home">
+      <div class="page-scroll">
+        <div class="hero-inner">
+          <div class="hero-copy">
+            <div class="eyebrow">💌 Cinta yang selalu aku bawa</div>
+            <h1>Untuk <span class="highlight">Athifa</span>,<br>yang paling aku sayang
+              <img class="cat-gif title-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExODdwOGtndXRibG5idW9mcTdtamJsZHZicDd6ajhiaWZzemg2eTBxaiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/Zl7u48zLVFgLpRwq6f/giphy.gif" alt="Love gif" />.
+            </h1>
+            <p class="lead">
+              Di setiap detik, aku ingin kamu tahu: kamu adalah cahaya yang paling hangat, paling indah,
+              dan paling membuat hidupku terasa penuh arti. Terima kasih karena ada di hidupku, Athifa.
+            </p>
+
+            <div class="hero-actions">
+              <button class="cta" id="loveBtn">Sampaikan cintaku</button>
+              <button type="button" class="secondary" data-page="letter">Baca surat</button>
+              <a class="creator-link" href="https://diastraa.vercel.app/" target="_blank" rel="noopener noreferrer">
+                <span>Website pembuat</span>
+                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExaXRjOWd6M3AzbTd4bDc3cXFhY3JucGM2YmluNDloNmVteDRvMnlldiZlcD12MV9naWZzX3NlYXJjaCZjdD1n/rvRsdy1lsAnWR5IQxR/giphy.gif" alt="Website pembuat" />
+              </a>
+            </div>
+
+            <div class="stats">
+              <div class="stat"><strong id="daysTogether">33</strong><span>Hari bersamamu</span></div>
+              <div class="stat"><strong>∞</strong><span>Rindu</span></div>
+              <div class="stat"><strong>100%</strong><span>Sayang kamu</span></div>
+            </div>
           </div>
 
-          <div class="stats">
-            <div class="stat">
-              <strong id="daysTogether">33</strong>
-              <span>Hari bersamamu</span>
+          <div class="hero-card">
+            <div class="portrait-wrap">
+              <img class="cat-gif portrait-top-gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bTZxdzdybDBrYXhpcHc5aDh4eHRkajQ4YTRnOXp1N2sxdXJpanV2bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/W2oKWbIYEioXgxVmEM/giphy.gif" alt="Gif dekorasi atas portrait" />
+              <div class="portrait">
+                <div class="portrait-badge">★ My favorite person</div>
+              </div>
+              <img class="cat-gif portrait-gif" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Kucing lucu" />
             </div>
-            <div class="stat">
-              <strong>∞</strong>
-              <span>Rindu</span>
-            </div>
-            <div class="stat">
-              <strong>100%</strong>
-              <span>Sayang kamu</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero-card">
-          <div class="portrait-wrap">
-            <img class="cat-gif portrait-top-gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3bTZxdzdybDBrYXhpcHc5aDh4eHRkajQ4YTRnOXp1N2sxdXJpanV2bCZlcD12MV9naWZzX3NlYXJjaCZjdD1n/W2oKWbIYEioXgxVmEM/giphy.gif" alt="Gif dekorasi atas portrait" />
-            <div class="portrait">
-              <div class="portrait-badge">★ My favorite person</div>
-            </div>
-            <img class="cat-gif portrait-gif" src="https://media.giphy.com/media/JIX9t2j0ZTN9S/giphy.gif" alt="Kucing lucu" />
           </div>
         </div>
       </div>
     </section>
 
-    <section id="story">
-      <div class="container">
-        <div class="section-intro">
-          <div>
-            <div class="section-eyebrow">Kenapa kamu istimewa</div>
-            <h2>Alasan aku jatuh cinta padamu</h2>
-          </div>
-          <p class="section-text">
-            Setiap hal kecil dari kamu sudah berhasil menempati ruang paling hangat di hati aku.
-          </p>
+    <!-- ---------- CERITA ---------- -->
+    <section class="page" id="page-story">
+      <div class="page-scroll">
+        <div class="page-head">
+          <span class="section-eyebrow">Kenapa kamu istimewa</span>
+          <h2>Alasan aku jatuh cinta padamu</h2>
+          <p class="section-text">Setiap hal kecil dari kamu udah pelan-pelan nemu tempat paling hangat di hati aku.</p>
         </div>
 
         <div class="story-grid">
@@ -1031,32 +151,31 @@
             <h3>Kehadirannya menenangkan</h3>
             <p>Denganmu, dunia terasa lebih tenang, lebih indah, dan lebih ringan.</p>
           </article>
-
           <article class="story-card">
             <div class="icon">🌷</div>
             <h3>Senyum yang memikat</h3>
             <p>Semua lelah hari ini hilang saat aku melihat senyummu yang tulus dan hangat.</p>
           </article>
-
           <article class="story-card">
             <div class="icon">💫</div>
             <h3>Hidupku jadi lebih berarti</h3>
             <p>Kamu membawaku ke cara baru melihat cinta, harapan, dan masa depan yang lebih indah.</p>
           </article>
         </div>
+
+        <blockquote class="quote">
+          “Kalau nanti kamu lupa seberapa berharga kamu, balik lagi ke halaman ini ya.”
+        </blockquote>
       </div>
     </section>
 
-    <section id="memories">
-      <div class="container">
-        <div class="section-intro">
-          <div>
-            <div class="section-eyebrow">Kenang-kenangan</div>
-            <h2>Foto bersama kita</h2>
-          </div>
-          <p class="section-text">
-            Momen kecil yang akan selalu aku simpan dengan hati paling hangat.
-          </p>
+    <!-- ---------- KENANGAN ---------- -->
+    <section class="page" id="page-memories">
+      <div class="page-scroll">
+        <div class="page-head">
+          <span class="section-eyebrow">Kenang-kenangan</span>
+          <h2>Foto bersama kita</h2>
+          <p class="section-text">Momen kecil yang akan selalu aku simpan dengan hati paling hangat.</p>
         </div>
 
         <div class="memory-grid">
@@ -1071,7 +190,7 @@
           <article class="memory-card">
             <div class="memory-frame">
               <img class="memory-photo" src="https://cdn.phototourl.com/free/2026-08-23-e66f379f-c77c-42d3-a1f0-8ddaa87e084e.jpg" alt="Kenangan pertama 2" />
-              <img class="cat-gif memory-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGR5Z3p1cHVuZ3hlcDByZmN6N3VoajdiN2gwcGNsZjhwMzcxczZrbSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/93mS3A87wfmOySC29W/giphy.gif" />
+              <img class="cat-gif memory-gif" src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNGR5Z3p1cHVuZ3hlcDByZmN6N3VoajdiN2gwcGNsZjhwMzcxczZrbSZlcD12MV9naWZzX3NlYXJjaCZjdD1n/93mS3A87wfmOySC29W/giphy.gif" alt="Kucing lucu" />
             </div>
             <div class="memory-caption">Fotbar lagi.</div>
           </article>
@@ -1079,7 +198,7 @@
           <article class="memory-card">
             <div class="memory-frame">
               <img class="memory-photo" src="https://cdn.phototourl.com/free/2026-08-23-e741b126-0d84-44ea-b2c6-d10cdaed7534.jpg" alt="Kenangan pertama 3" />
-              <img class="cat-gif memory-gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NjZxY3N4bTNscnpkdHlyZjNkMm1vdWo4aHFsNXRpMDRwdnVpd283NyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ytu2GUYbvhz7zShGwS/giphy.gif" />
+              <img class="cat-gif memory-gif" src="https://media.giphy.com/media/v1.Y2lkPWVjZjA1ZTQ3NjZxY3N4bTNscnpkdHlyZjNkMm1vdWo4aHFsNXRpMDRwdnVpd283NyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/ytu2GUYbvhz7zShGwS/giphy.gif" alt="Kucing lucu" />
             </div>
             <div class="memory-caption">Fotbar lagi dan lagi wkwkwkkw.</div>
           </article>
@@ -1087,16 +206,13 @@
       </div>
     </section>
 
-    <section id="love">
-      <div class="container">
-        <div class="section-intro">
-          <div>
-            <div class="section-eyebrow">Cintaku untukmu</div>
-            <h2>Love meter</h2>
-          </div>
-          <p class="section-text">
-            Ini bukan sekadar angka, tapi seberapa besar rasa sayangku yang terus tumbuh tiap hari.
-          </p>
+    <!-- ---------- KASIH ---------- -->
+    <section class="page" id="page-love">
+      <div class="page-scroll">
+        <div class="page-head">
+          <span class="section-eyebrow">Cintaku untukmu</span>
+          <h2>Kasih &amp; rasa sayang</h2>
+          <p class="section-text">Ini bukan sekadar angka, tapi seberapa besar rasa sayangku yang terus tumbuh tiap hari.</p>
         </div>
 
         <div class="love-meter-wrap">
@@ -1105,15 +221,14 @@
               <h3>Level cintaku</h3>
               <div class="meter-value" id="meterValue">99%</div>
             </div>
-            <div class="progress">
-              <div class="progress-bar" id="progressBar"></div>
-            </div>
+            <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
             <div class="meter-tags">
               <span class="tag">Tulus</span>
               <span class="tag">Setia</span>
               <span class="tag">Romantis</span>
               <span class="tag">Penuh rindu</span>
             </div>
+            <button class="cta ghost small" id="plusLoveBtn">Tambah sayang +1 ❤</button>
           </div>
 
           <div class="panel">
@@ -1125,6 +240,33 @@
           </div>
         </div>
 
+        <div class="feature-grid">
+          <div class="panel">
+            <div class="meter-head"><h3>Alasan aku sayang kamu</h3><span class="chip" id="reasonCount">01</span></div>
+            <p class="reason-text" id="reasonText">Tekan tombolnya, aku punya banyak alasan buat kamu.</p>
+            <button class="cta ghost small" id="reasonBtn">Kasih alasan baru 💡</button>
+          </div>
+
+          <div class="panel">
+            <div class="meter-head"><h3>Waktu yang udah kita lewati</h3><span class="chip">sejak 11 Juli</span></div>
+            <div class="clock">
+              <div class="clock-cell"><strong data-clock="d">0</strong><span>Hari</span></div>
+              <div class="clock-cell"><strong data-clock="h">0</strong><span>Jam</span></div>
+              <div class="clock-cell"><strong data-clock="m">0</strong><span>Menit</span></div>
+              <div class="clock-cell"><strong data-clock="s">0</strong><span>Detik</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="panel hold-panel">
+          <div class="meter-head"><h3>Coba tahan tombolnya</h3><span class="chip">hold</span></div>
+          <button class="hold-btn" id="holdBtn">
+            <span class="hold-fill" id="holdFill"></span>
+            <span class="hold-label">Tahan untuk kirim cinta 💗</span>
+          </button>
+          <div class="hold-result" id="holdResult"></div>
+        </div>
+
         <div class="timeline">
           <div class="time-item">
             <div class="time-date">01</div>
@@ -1133,7 +275,6 @@
               <p>Perasaan itu muncul tanpa aku sadari, seperti sesuatu yang sudah siap tumbuh sejak lama.</p>
             </div>
           </div>
-
           <div class="time-item">
             <div class="time-date">02</div>
             <div>
@@ -1141,7 +282,6 @@
               <p>Semua terasa lebih hidup, lebih cerah, dan lebih berwarna setelah kamu masuk ke hidupku.</p>
             </div>
           </div>
-
           <div class="time-item">
             <div class="time-date">03</div>
             <div>
@@ -1153,382 +293,98 @@
       </div>
     </section>
 
-    <section id="gallery">
-      <div class="container">
-        <div class="section-intro">
-          <div>
-            <div class="section-eyebrow">Galeri</div>
-            <h2>Koleksi momen indah lainnya</h2>
-          </div>
+    <!-- ---------- GALERI ---------- -->
+    <section class="page" id="page-gallery">
+      <div class="page-scroll">
+        <div class="page-head">
+          <span class="section-eyebrow">Galeri</span>
+          <h2>Koleksi momen indah lainnya</h2>
           <p class="section-text">
-            Gallery fiture ini masih dalam tahap pengembangan, jadi untuk sementara hanya menampilkan placeholder. Nantikan update selanjutnya!
+            Gallery fiture ini masih dalam tahap pengembangan, jadi untuk sementara hanya menampilkan placeholder.
+            Nantikan update selanjutnya!
           </p>
         </div>
-
-        <div class="gallery-grid">
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 1</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 2</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 3</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 4</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 5</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 6</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 7</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 8</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 9</span>
-            </div>
-          </div>
-
-          <div class="gallery-item" onclick="window.location.href=this.dataset.link;" style="cursor: default;">
-            <div class="gallery-placeholder">
-              <span>🖼️</span>
-              <span>Foto 10</span>
-            </div>
-          </div>
-        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
       </div>
     </section>
 
-    <section id="letter">
-      <div class="container">
-        <div class="section-intro">
-          <div>
-            <div class="section-eyebrow">Surat untukmu</div>
-            <h2>Pesan hati yang paling sederhana</h2>
-          </div>
-          <p class="section-text">
-            Aku menulis ini sambil berharap kamu tahu betapa besar tempatmu di hatiku.
-          </p>
+    <!-- ---------- SURAT ---------- -->
+    <section class="page" id="page-letter">
+      <div class="page-scroll">
+        <div class="page-head">
+          <span class="section-eyebrow">Surat untukmu</span>
+          <h2>Pesan hati yang paling sederhana</h2>
+          <p class="section-text">Aku menulis ini sambil berharap kamu tahu betapa besar tempatmu di hatiku.</p>
         </div>
 
-        <div class="message-box">
-          <div class="letter">
-            <p>
-              Athifa, <br><br>
-              Terima kasih karena kamu adalah rumah paling nyaman di dalam hidupku. Aku tidak selalu pandai
-              berkata manis, tapi aku selalu berusaha menunjukkan dengan cara yang aku punya: dengan perhatian,
-              dengan doa, dengan rasa sayang yang terus tumbuh setiap hari. <br><br>
-              Kalau boleh, aku ingin menghabiskan lebih banyak waktu bersamamu, melihat senyummu,
-              mendengar suaramu, dan menjaga kamu dengan sepenuh hati. Aku ingin kamu tahu, kamu benar-benar
-              istimewa. Dan sampai kapan pun, aku akan tetap memilihmu, dengan segala versi diriku yang paling jujur.
-            </p>
-            <div class="letter-sign">
-              <span>Dengan cinta,</span>
-              <span>❤ Kamu</span>
-            </div>
-          </div>
+        <div class="envelope-scene" id="envelopeScene">
+          <div class="envelope" id="envelope" role="button" tabindex="0" aria-label="Buka surat">
+            <div class="env-back"></div>
 
-          <div class="checklist">
-            <div class="check"><strong>1. Kamu adalah alasan aku tersenyum</strong><span>😊</span></div>
-            <div class="check"><strong>2. Aku ingin selalu dekat denganmu</strong><span>🤍</span></div>
-            <div class="check"><strong>3. Aku ingin melihatmu bahagia</strong><span>🌷</span></div>
-            <div class="check"><strong>4. Aku ingin menjadi tempatmu pulang</strong><span>🏡</span></div>
-            <div class="check"><strong>5. Aku akan terus menyayangimu</strong><span>💖</span></div>
+            <div class="env-letter">
+              <div class="letter-head">
+                <span class="letter-stamp">💌</span>
+                <span class="letter-from">Dari Dias, untuk Athifa</span>
+              </div>
+              <div class="letter-body">
+                <p>
+                  Athifa,<br><br>
+                  Terima kasih karena kamu adalah rumah paling nyaman di dalam hidupku. Aku tidak selalu pandai
+                  berkata manis, tapi aku selalu berusaha menunjukkan dengan cara yang aku punya: dengan perhatian,
+                  dengan doa, dengan rasa sayang yang terus tumbuh setiap hari.
+                </p>
+                <p>
+                  Kalau boleh, aku ingin menghabiskan lebih banyak waktu bersamamu, melihat senyummu,
+                  mendengar suaramu, dan menjaga kamu dengan sepenuh hati. Aku ingin kamu tahu, kamu benar-benar
+                  istimewa. Dan sampai kapan pun, aku akan tetap memilihmu, dengan segala versi diriku yang paling jujur.
+                </p>
+              </div>
+              <div class="letter-sign">
+                <span>Dengan cinta,</span>
+                <span>By diastraa❤  </span>
+              </div>
+              <button type="button" class="env-close" id="envClose">Tutup surat</button>
+            </div>
+
+            <div class="env-front"></div>
+            <div class="env-flap"></div>
+            <div class="env-seal">❤</div>
           </div>
+          <p class="envelope-hint" id="envelopeHint">Klik amplopnya buat buka surat 💌</p>
+        </div>
+
+        <div class="checklist">
+          <div class="check"><strong>1. Kamu adalah alasan aku tersenyum</strong><span>😊</span></div>
+          <div class="check"><strong>2. Aku ingin selalu dekat denganmu</strong><span>🤍</span></div>
+          <div class="check"><strong>3. Aku ingin melihatmu bahagia</strong><span>🌷</span></div>
+          <div class="check"><strong>4. Aku ingin menjadi tempatmu pulang</strong><span>🏡</span></div>
+          <div class="check"><strong>5. Aku akan terus menyayangimu</strong><span>💖</span></div>
         </div>
       </div>
     </section>
   </main>
+</div>
 
-    <footer class="footer">
-      <div class="container">
-        Dibuat dengan cinta tulus untuk Athifa — selalu, selamanya, dan di setiap hari yang datang.
-      </div>
-    </footer>
-  </div>
-
-  <div class="modal" id="surpriseModal" aria-hidden="true">
-    <div class="modal-card">
-      <div class="modal-header">
-        <h3>✨ Kado kecil untuk Athifa</h3>
-        <button class="close-btn" id="closeModal" aria-label="Tutup">×</button>
-      </div>
-      <p>
-        Kamu tidak hanya cantik, kamu juga adalah alasan aku percaya bahwa cinta itu bisa terasa lembut,
-        tenang, dan sangat nyata. Aku ingin semua harimu terasa hangat seperti pelukan yang selalu aku bayangkan.
-      </p>
-      <p>
-        Jangan pernah ragu, Athifa. Kamu sangat dicintai. Sangat-sangat dicintai, bahkan ketika kata-kata
-        belum cukup untuk menggambarkan rasa itu.
-      </p>
-      <button class="cta" id="modalLoveBtn">Aku mau terus sayang kamu</button>
+<!-- ============ SURPRISE MODAL ============ -->
+<div class="modal" id="surpriseModal" aria-hidden="true">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>✨ Kado kecil untuk Athifa</h3>
+      <button class="close-btn" id="closeModal" aria-label="Tutup">×</button>
     </div>
+    <p>
+      Kamu tidak hanya cantik, kamu juga adalah alasan aku percaya bahwa cinta itu bisa terasa lembut,
+      tenang, dan sangat nyata. Aku ingin semua harimu terasa hangat seperti pelukan yang selalu aku bayangkan.
+    </p>
+    <p>
+      Jangan pernah ragu, Athifa. Kamu sangat dicintai. Sangat-sangat dicintai, bahkan ketika kata-kata
+      belum cukup untuk menggambarkan rasa itu.
+    </p>
+    <button class="cta" id="modalLoveBtn">Aku mau terus sayang kamu</button>
   </div>
+</div>
 
-  <script>
-    const bgMusic = document.getElementById('bgMusic');
-    function startBackgroundMusic() {
-      if (!bgMusic) return;
-      bgMusic.volume = 0.5;
-      bgMusic.loop = true;
-      bgMusic.muted = false;
-      bgMusic.play().catch(() => {});
-    }
-
-    if (bgMusic) {
-      bgMusic.addEventListener('ended', () => {
-        bgMusic.currentTime = 0;
-        bgMusic.play().catch(() => {});
-      });
-      window.addEventListener('load', startBackgroundMusic, { once: true });
-      document.addEventListener('pointerdown', startBackgroundMusic, { once: true });
-      document.addEventListener('touchstart', startBackgroundMusic, { once: true });
-    }
-
-    const lockScreen = document.getElementById('lockScreen');
-    const passwordInput = document.getElementById('passwordInput');
-    const unlockBtn = document.getElementById('unlockBtn');
-    const lockMessage = document.getElementById('lockMessage');
-    const correctPassword = '251110';
-
-    function unlockPage() {
-      document.body.classList.remove('locked');
-      lockScreen.classList.remove('show');
-      lockScreen.setAttribute('aria-hidden', 'true');
-      passwordInput.value = '';
-      lockMessage.textContent = '';
-    }
-
-    function checkPassword() {
-      const value = passwordInput.value.trim();
-      if (value === correctPassword) {
-        unlockPage();
-      } else {
-        lockMessage.textContent = 'Password salah. Coba lagi ya!';
-        passwordInput.focus();
-      }
-    }
-
-    unlockBtn.addEventListener('click', checkPassword);
-    passwordInput.addEventListener('keydown', (event) => {
-      if (event.key === 'Enter') checkPassword();
-    });
-
-    const startDate = new Date('2026-07-11');
-    const today = new Date();
-    const diffDays = Math.floor((today - startDate) / (1000 * 60 * 60 * 24));
-    document.getElementById('daysTogether').textContent = diffDays;
-
-    const meterValue = document.getElementById('meterValue');
-    const progressBar = document.getElementById('progressBar');
-    let currentPercent = 99;
-    meterValue.textContent = currentPercent + '%';
-    progressBar.style.width = currentPercent + '%';
-
-    function burstHearts() {
-      for (let i = 0; i < 18; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'floating-heart';
-        heart.textContent = ['❤', '💖', '💗', '💞', '✨'][Math.floor(Math.random() * 5)];
-        heart.style.left = Math.random() * window.innerWidth + 'px';
-        heart.style.fontSize = (Math.random() * 22 + 18) + 'px';
-        heart.style.animationDuration = (Math.random() * 4 + 5) + 's';
-        heart.style.opacity = '0.9';
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 8000);
-      }
-    }
-
-    setInterval(burstHearts, 1800);
-
-    // Gallery setup - edit URL links di bawah ini
-    const galleryItems = document.querySelectorAll('.gallery-item');
-    const galleryLinks = [
-      'https://cdn.phototourl.com/free/2026-08-23-91bb3278-8f02-4a7f-b2c8-52f252ed8575.jpg', // Foto 1
-      'https://videotourl.com/videos/1787455901826-16589960-4408-4409-b749-7c8e5e7d21a1.mp4', // Video 2
-      'https://cdn.phototourl.com/free/2026-08-23-a46ad76c-e1e3-414d-8ac4-c5f70bd7dca0.jpg', // Foto 3
-      'https://videotourl.com/videos/1787455656100-d2386848-0e90-40fa-b51e-8ef0f57e3c58.mp4', // Video 4
-      'https://cdn.phototourl.com/free/2026-08-23-00354284-62cf-436b-b919-fa0d3a782810.jpg', // Foto 5 - masukkan URL
-      'https://videotourl.com/videos/1787455612018-58c209ff-fa51-4fbd-970b-7ec415877d10.mp4', // Video 6 - masukkan URL
-      '', // Foto 7 - masukkan URL
-      '', // Foto 8 - masukkan URL
-      '', // Foto 9 - masukkan URL
-      ''  // Foto 10 - masukkan URL
-    ];
-
-    function isVideoUrl(url) {
-      return /\.(mp4|webm|ogg|mov|m4v)(\?|$)/i.test(url) || /video/i.test(url);
-    }
-
-    galleryItems.forEach((item, index) => {
-      if (galleryLinks[index]) {
-        const placeholder = item.querySelector('.gallery-placeholder');
-        const mediaUrl = galleryLinks[index];
-        const isVideo = isVideoUrl(mediaUrl);
-        const media = isVideo ? document.createElement('video') : document.createElement('img');
-
-        media.src = mediaUrl;
-        media.alt = `Galeri ${index + 1}`;
-        media.style.width = '100%';
-        media.style.height = '100%';
-        media.style.objectFit = 'cover';
-
-        if (isVideo) {
-          media.controls = true;
-          media.autoplay = true;
-          media.loop = true;
-          media.muted = true;
-          media.playsInline = true;
-          media.preload = 'auto';
-          media.setAttribute('playsinline', 'true');
-          media.setAttribute('webkit-playsinline', 'true');
-          media.setAttribute('autoplay', 'autoplay');
-          media.setAttribute('muted', 'muted');
-          media.setAttribute('loop', 'loop');
-          media.addEventListener('ended', () => {
-            media.currentTime = 0;
-            media.play().catch(() => {});
-          });
-          media.onloadeddata = () => {
-            if (placeholder) placeholder.style.display = 'none';
-            item.style.cursor = 'pointer';
-            media.play().catch(() => {});
-          };
-          media.onerror = () => {
-            media.style.display = 'none';
-            if (placeholder) placeholder.style.display = 'flex';
-          };
-        } else {
-          media.onerror = () => {
-            media.style.display = 'none';
-            if (placeholder) placeholder.style.display = 'flex';
-          };
-          media.onload = () => {
-            if (placeholder) placeholder.style.display = 'none';
-            item.style.cursor = 'pointer';
-          };
-        }
-
-        item.innerHTML = '';
-        item.appendChild(media);
-        item.dataset.link = mediaUrl;
-        item.style.cursor = 'pointer';
-      }
-    });
-
-    const surpriseBtn = document.getElementById('surpriseBtn');
-    const closeModal = document.getElementById('closeModal');
-    const surpriseModal = document.getElementById('surpriseModal');
-    const loveBtn = document.getElementById('loveBtn');
-    const modalLoveBtn = document.getElementById('modalLoveBtn');
-
-    function openModal() {
-      surpriseModal.classList.add('open');
-      surpriseModal.setAttribute('aria-hidden', 'false');
-      burstHearts();
-    }
-
-    function closeModalWindow() {
-      surpriseModal.classList.remove('open');
-      surpriseModal.setAttribute('aria-hidden', 'true');
-    }
-
-    surpriseBtn.addEventListener('click', openModal);
-    loveBtn.addEventListener('click', openModal);
-    closeModal.addEventListener('click', closeModalWindow);
-    modalLoveBtn.addEventListener('click', () => {
-      currentPercent = Math.min(100, currentPercent + 1);
-      meterValue.textContent = currentPercent + '%';
-      progressBar.style.width = currentPercent + '%';
-      burstHearts();
-      closeModalWindow();
-    });
-
-    surpriseModal.addEventListener('click', (e) => {
-      if (e.target === surpriseModal) closeModalWindow();
-    });
-
-    const audioCtx = window.AudioContext || window.webkitAudioContext;
-    if (audioCtx) {
-      const ctx = new audioCtx();
-      function playTone(freq, duration, type='sine', volume=0.04) {
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-        osc.type = type;
-        osc.frequency.value = freq;
-        gain.gain.value = volume;
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-        osc.start();
-        gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + duration);
-        osc.stop(ctx.currentTime + duration);
-      }
-
-      function playLoveMelody() {
-        if (ctx.state === 'suspended') ctx.resume();
-        const melody = [440, 554.37, 659.25, 554.37, 659.25, 783.99];
-        melody.forEach((freq, idx) => {
-          setTimeout(() => playTone(freq, 0.22, 'triangle', 0.045), idx * 180);
-        });
-      }
-
-      loveBtn.addEventListener('click', playLoveMelody);
-      surpriseBtn.addEventListener('click', playLoveMelody);
-    }
-  </script>
-  <style>
-    .credit {
-      position: fixed;
-      bottom: 1rem;
-      right: 1rem;
-      font-size: 0.85rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      color: #00d4ff;
-      text-shadow: 0 0 10px #00d4ff, 0 0 20px rgba(0, 212, 255, 0.6);
-      z-index: 10;
-    }
-  </style>
-  <div class="credit">Made By DiasParker</div>
+<audio id="bgMusic" src="song.mp3" loop preload="auto"></audio>
+<script src="script.js"></script>
 </body>
 </html>
